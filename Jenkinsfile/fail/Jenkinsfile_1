@@ -1,0 +1,13 @@
+node() {    
+    stage("s1") {
+        sh 'ls -al'
+    }
+    
+    stage("s2") {
+        sh 'ls -al'
+    }
+    
+    stage("s3") {
+        sh 'ls -al'
+    }
+}

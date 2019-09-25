@@ -1,0 +1,21 @@
+node() {
+    
+    stage("s1") {
+        sh 'ls -al'
+    }
+    
+
+    stage("s2") {
+        sh 'ls -al'
+        warnError('script error') {
+            sh script: 'exit 1'
+        }
+        
+    }
+    
+    stage("s3") {
+        sh 'ls -al'
+    }
+    
+    
+}

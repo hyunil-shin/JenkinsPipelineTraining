@@ -1,0 +1,9 @@
+@Library('demo')_
+import ci.Bar
+
+
+  stage('Demo') {
+   Bar a = new Bar()
+   a.runTest('hello', 'world')   
+  }
+

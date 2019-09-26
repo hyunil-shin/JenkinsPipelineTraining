@@ -1,7 +1,7 @@
 # JenkinsPipelineTraining
 
 
-## Library
+## Shared Library
 https://github.com/hyunil-shin/pipeline-library-demo.git
 
 ## maven build

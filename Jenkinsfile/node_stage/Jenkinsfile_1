@@ -1,0 +1,11 @@
+stage("s1") {   
+   node ("nodeA") {
+    sh 'stage 1, nodeA'
+   }
+}
+
+stage("s2") {   
+   node ("nodeB") {
+      sh 'stage 2, nodeB'
+   }
+}

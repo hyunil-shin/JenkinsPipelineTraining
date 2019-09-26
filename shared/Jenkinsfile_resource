@@ -1,0 +1,10 @@
+@Library('demo')_
+stage('load script') {
+    node() {
+        def scriptContent = libraryResource "script.sh"
+        println scriptContent
+        writeFile file: "hello.sh", text: scriptContent
+        sh "chmod +x hello.sh"
+        sh "./hello.sh"
+    }
+}

@@ -1,0 +1,33 @@
+
+node {
+    
+    Map builds = [:]
+    List jdks = ["openjdk8", 'openjdk11', 'openjdk12']
+    jdks.each {
+        builds[it] = {
+            stage(it) {
+                dir(it) {
+                    git 'https://github.com/hyunil-shin/java-maven-junit-helloworld.git'
+                    def jdk = tool name: it, type: 'jdk'
+                    withEnv(["JAVA_HOME=${jdk}", "PATH+JDK=${jdk}/bin", "PATH+MAVEN=${tool 'apache-maven-3.6.0'}/bin"]) {
+                        sh "mvn clean test -Dsurefire.reportNameSuffix=${it}"
+                        stash includes: 'target/surefire-reports/*.xml', name: it
+                    }
+                }
+            }
+        }
+    }
+    
+    parallel builds
+    
+    stage('report') {
+        dir('junit') {
+            jdks.each {
+                unstash it
+            }
+        }
+        junit 'junit/**/*.xml'
+    }
+    
+    
+}

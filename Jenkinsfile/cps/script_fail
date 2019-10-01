@@ -1,14 +1,13 @@
-properties([[$class: 'JiraProjectProperty'], [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], parameters([string(defaultValue: 'hello', description: '', name: 'param1', trim: false)])])
+node() {
+    
+    def body = '{"name": "hello", "age": 30 }'
+    toJson(body)
+}
 
-pp()
 
 
-def pp() {
-    def myparams = currentBuild.rawBuild.getAction(ParametersAction)
-    def pMap = [:]
-     for( p in myparams ) {
-        pMap[p.name.toString()] = p.value.toString()
-     }
-     
-     println pMap
+def toJson(responseBody) {
+	def parser = new groovy.json.JsonSlurper()
+	def body = parser.parseText(responseBody)
+    println(body)
 }

@@ -1,6 +1,6 @@
 node() {
     
-    def body = '{"name": "hello", "age": 30 }'
+    def body = '{"name": "hello", "age": 30, "history": ["NHN", "AWS", "Google"] }'
     toJson(body)
 }
 
@@ -9,5 +9,8 @@ node() {
 def toJson(responseBody) {
 	def parser = new groovy.json.JsonSlurper()
 	def body = parser.parseText(responseBody)
-    println(body)
+    for(int i = 0; i < body.history.size(); i++) {
+        println (body.history[i])
+    }
+    
 }

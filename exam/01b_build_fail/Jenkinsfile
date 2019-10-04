@@ -1,0 +1,19 @@
+node() {
+
+stage('s1') {
+  echo "s1"
+}
+
+stage('s2') {
+  echo "s2"
+}
+
+stage('s3') {
+  sh 'exit 10'
+}
+
+stage('s4') {
+  echo "s4"
+}
+
+}

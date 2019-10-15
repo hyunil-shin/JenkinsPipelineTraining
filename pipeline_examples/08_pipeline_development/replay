@@ -1,7 +1,7 @@
 node() {
     
-    def body = '{"name": "hello", "age": 30, "history": ["NHN", "AWS", "Google"] }'
-    toJson(body)
+    def body = '{"name": "hello", "age": 30, "history2": ["NHN", "AWS", "Google"] }'
+    toJson1(body)
 }
 
 

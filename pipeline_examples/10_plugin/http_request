@@ -1,0 +1,12 @@
+def response = httpRequest "http://httpbin.org/response-headers?param1=abc"
+node() {
+    echo "response "
+    writeFile file: 'response.txt', text: response.content
+}
+
+
+// create payload
+//def patchOrg = """
+//    {"description": "$description"}
+//"""
+//def response = httpRequest acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'PATCH', requestBody: patchOrg, url: "https://api.github.com/orgs/${orgName}"

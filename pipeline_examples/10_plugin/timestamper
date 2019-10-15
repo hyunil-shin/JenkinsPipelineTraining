@@ -1,0 +1,7 @@
+node('master') {
+    
+    timestamps {
+        echo "a"
+        echo "b"
+    }
+}

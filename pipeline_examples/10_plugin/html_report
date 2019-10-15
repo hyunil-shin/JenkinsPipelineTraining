@@ -1,0 +1,11 @@
+node() {
+    
+    def html_body = ""
+    html_body +="<html><body>this is a report<br>"
+    html_body += '<iframe src="https://giphy.com/embed/3oEdv5e5Zd2gsczAhG" width="480" height="262" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/nba-basketball-steph-curry-the-finals-3oEdv5e5Zd2gsczAhG">via GIPHY</a></p>'
+    html_body += "<br>def</body></html>"
+    writeFile file: 'report.html', text: html_body
+    
+    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: '', reportFiles: 'report.html', reportName: 'TOAST FORWARD', reportTitles: ''])
+    
+}

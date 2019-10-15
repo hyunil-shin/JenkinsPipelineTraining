@@ -1,0 +1,16 @@
+stage('post build') {
+    
+    manager.addShortText("short text")
+    
+    
+    // The icon must be one of the 48x48 icons offered by Jenkins.
+    // JENKINS_HOME/war/images/48X48: search.png, start.png, user.png, ... 
+    manager.createSummary("star.png")
+            .appendText("<h1>NBA</h1>", false, false, false, "red")
+            
+    def body = ""
+    body += '<iframe src="https://giphy.com/embed/3oEdv5e5Zd2gsczAhG" width="480" height="262" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/nba-basketball-steph-curry-the-finals-3oEdv5e5Zd2gsczAhG">via GIPHY</a></p>'
+    manager.createSummary("network.png")
+            .appendText(body, false, false, false, "red")
+
+}

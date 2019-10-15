@@ -1,3 +1,5 @@
+// warnError step 사용
+
 node() {
     
     stage("s1") {

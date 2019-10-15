@@ -1,3 +1,5 @@
+// stage 2에서 step 실패 발생
+
 node() {
     
     stage("s1") {

@@ -1,3 +1,5 @@
+// stage 2를 실패로 만들기
+
 node() {
     
     stage("s1") {

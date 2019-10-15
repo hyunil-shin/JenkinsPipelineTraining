@@ -1,3 +1,5 @@
+// 모든 stage 성공
+
 node() {    
     stage("s1") {
         sh 'ls -al'

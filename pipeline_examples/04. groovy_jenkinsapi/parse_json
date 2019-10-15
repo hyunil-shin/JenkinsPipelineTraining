@@ -1,0 +1,11 @@
+// Note: no node
+
+def body = """ {
+    "f1": "field 1",
+    "f2": "field 2"
+}"""
+
+def parser = new groovy.json.JsonSlurper()
+def data = parser.parseText(body)
+echo "json: ${data.f1}"
+echo "json: ${data.f2}"

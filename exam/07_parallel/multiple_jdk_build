@@ -7,22 +7,22 @@ node {
     
     stage('jdk8') {
         def jdk = tool name: 'openjdk8', type: 'jdk'
-        withEnv(["JAVA_HOME=${jdk}", "PATH+JDK=${jdk}/bin", "PATH+MAVEN=${tool 'apache-maven-3.6.0'}/bin"]) {
+        withEnv(["JAVA_HOME=${jdk}", "PATH+JDK=${jdk}/bin", "PATH+MAVEN=${tool 'mvn-3.6.0'}/bin"]) {
             sh "mvn clean test"
         }
     }
     
     stage('jdk11') {
-        def jdk = tool name: 'openjdk11', type: 'jdk'
-        withEnv(["JAVA_HOME=${jdk}", "PATH+JDK=${jdk}/bin", "PATH+MAVEN=${tool 'apache-maven-3.6.0'}/bin"]) {
+        def jdk = tool name: 'openjdk9', type: 'jdk'
+        withEnv(["JAVA_HOME=${jdk}", "PATH+JDK=${jdk}/bin", "PATH+MAVEN=${tool 'mvn-3.6.0'}/bin"]) {
             sh "mvn clean test"
         }
     }
     
     
     stage('jdk12') {
-        def jdk = tool name: 'openjdk12', type: 'jdk'
-        withEnv(["JAVA_HOME=${jdk}", "PATH+JDK=${jdk}/bin", "PATH+MAVEN=${tool 'apache-maven-3.6.0'}/bin"]) {
+        def jdk = tool name: 'openjdk10', type: 'jdk'
+        withEnv(["JAVA_HOME=${jdk}", "PATH+JDK=${jdk}/bin", "PATH+MAVEN=${tool 'mvn-3.6.0'}/bin"]) {
             sh "mvn clean test"
         }
     }

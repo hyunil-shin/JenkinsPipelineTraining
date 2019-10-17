@@ -1,0 +1,25 @@
+
+node {
+    deleteDir()
+    stage('stash') {
+        
+        sh 'mkdir -p hello'
+        dir('hello') {
+            // create file
+            sh 'echo "hey" > file1.txt'
+            stash includes: 'file1.txt', name: 'file1'
+        }
+    }
+    
+    // other steps
+    stage('progress') {
+        echo "..."
+    }
+    
+    stage('unstash') {
+        
+        unstash 'file1'
+        sh 'find ./'
+        sh 'cat file1.txt'
+    }
+}

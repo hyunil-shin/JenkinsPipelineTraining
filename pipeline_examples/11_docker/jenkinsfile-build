@@ -6,7 +6,7 @@ node {
      def app
      dir('pipeline_examples/11_docker') {        
          stage('Build image') {
-             app = docker.build("hyunilshin/jenkins-training:${BUILD_NUMBER}", '-f ./Dockerfile_nginx .')
+             app = docker.build("hyunilshin/jenkins-training:${BUILD_BRANCH}-${BUILD_NUMBER}", '-f ./Dockerfile_nginx .')
          }
      }
 
@@ -16,7 +16,7 @@ node {
       //   }
 
       stage('test') {
-         docker.image("hyunilshin/jenkins-training:${BUILD_NUMBER}").withRun("-p 8087:80") { c ->
+         docker.image("hyunilshin/jenkins-training:${BUILD_BRANCH}-${BUILD_NUMBER}").withRun("-p 8087:80") { c ->
             // container가 아닌 host에서 실행함
             sh script: "curl -i http://localhost:8087/", returnStatus: true
          }

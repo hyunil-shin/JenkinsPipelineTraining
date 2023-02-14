@@ -4,8 +4,7 @@ node {
      }
 
      def app
-     dir('pipeline_examples/11_docker') {
-        
+     dir('pipeline_examples/11_docker') {        
          stage('Build image') {
              app = docker.build("hyunilshin/jenkins-training:${BUILD_NUMBER}", '-f ./Dockerfile_nginx .')
          }
@@ -24,11 +23,10 @@ node {
       }
 
       stage('Push image') {
-          docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-hyunilshin') {
-              app.push()
-              app.push("latest")
-          }
+         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-hyunilshin') {
+             app.push()
+             app.push("latest")
+         }
       }
-    }
- }
+}
 

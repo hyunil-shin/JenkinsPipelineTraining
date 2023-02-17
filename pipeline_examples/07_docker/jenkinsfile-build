@@ -1,0 +1,32 @@
+node {
+     stage('Clone repository') {
+         checkout scm
+     }
+
+     def app
+     dir('pipeline_examples/11_docker') {        
+         stage('Build image') {
+             app = docker.build("hyunilshin/jenkins-training:${BRANCH_NAME}-${BUILD_NUMBER}", '-f ./Dockerfile_nginx .')
+         }
+     }
+
+      //   app.inside {
+      //      sh script: 'ps -ef | grep nginx', returnStatus: true
+            // CMD가 cat로 변경되어 컨테이너에서 nginx가 실행되지는 않는다.
+      //   }
+
+      stage('test') {
+         docker.image("hyunilshin/jenkins-training:${BRANCH_NAME}-${BUILD_NUMBER}").withRun("-p 8087:80") { c ->
+            // container가 아닌 host에서 실행함
+            sh script: "curl -i http://localhost:8087/", returnStatus: true
+         }
+      }
+
+      stage('Push image') {
+         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-hyunilshin') {
+             app.push()
+             app.push("latest")
+         }
+      }
+}
+

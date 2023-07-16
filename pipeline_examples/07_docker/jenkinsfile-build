@@ -4,7 +4,7 @@ node {
      }
 
      def app
-     dir('pipeline_examples/11_docker') {        
+     dir('pipeline_examples/07_docker') {
          stage('Build image') {
              app = docker.build("hyunilshin/jenkins-training:${BRANCH_NAME}-${BUILD_NUMBER}", '-f ./Dockerfile_nginx .')
          }

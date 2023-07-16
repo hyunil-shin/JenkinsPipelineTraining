@@ -17,7 +17,7 @@ node {
       //   }
 
       stage('test') {
-         docker.image(imageName).withRun("-p 8087:80") { c ->
+         app.withRun("-p 8087:80") { c ->
             // container가 아닌 host에서 실행함
             sh script: "curl -i http://localhost:8087/", returnStatus: true
          }

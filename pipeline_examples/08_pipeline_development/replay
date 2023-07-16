@@ -1,16 +1,18 @@
 node() {
     
     def body = '{"name": "hello", "age": 30, "history2": ["NHN", "AWS", "Google"] }'
-    toJson1(body)
+    toJson1(body)	// => toJson()
 }
 
 
 
 def toJson(responseBody) {
-	def parser = new groovy.json.JsonSlurper()
-	def body = parser.parseText(responseBody)
-    for(int i = 0; i < body.history.size(); i++) {
-        println (body.history[i])
+    def parser = new groovy.json.JsonSlurper()
+    def body = parser.parseText(responseBody)
+
+    // body.hist => body.history2
+    for(int i = 0; i < body.hist.size(); i++) {
+        println (body.history2[i])
     }
     
 }

@@ -1,7 +1,7 @@
 node() {
     
     def body = '{"name": "hello", "age": 30, "history2": ["NHN", "AWS", "Google"] }'
-    toJson1(body)
+    toJson1(body)	// 함수명 오타: toJson()
 }
 
 

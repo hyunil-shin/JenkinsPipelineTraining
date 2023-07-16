@@ -27,6 +27,8 @@ node {
          docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-hyunilshin') {
              app.push()
              app.push("latest")
+
+               // https://hub.docker.com/r/hyunilshin/jenkins-training-nginx
          }
       }
 }

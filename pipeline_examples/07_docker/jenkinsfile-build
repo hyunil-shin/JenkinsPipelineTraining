@@ -25,7 +25,7 @@ node {
 
       stage('Push image') {
          docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-hyunilshin') {
-             app.push("${env.BUILD_NUMBER}")
+             app.push() // default: branch-build_number
              app.push("latest")
 
                // https://hub.docker.com/r/hyunilshin/jenkins-training-nginx

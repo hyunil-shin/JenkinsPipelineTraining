@@ -29,7 +29,7 @@ node {
              app.push("latest")
 
              // 
-            def messengerBody = "new image pushed"
+            def messengerBody = "new image pushed: ${imageName}"
             withCredentials([string(credentialsId: 'dooray_incoming_hookurl', variable: 'DOORAY_URL')]) {
  
                 httpRequest httpMode: 'POST', 

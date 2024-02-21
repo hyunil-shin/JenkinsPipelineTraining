@@ -28,7 +28,23 @@ node {
              app.push() // default: branch-build_number
              app.push("latest")
 
-               // https://hub.docker.com/r/hyunilshin/jenkins-training-nginx
+             // 
+            def messengerBody = "new image pushed"
+            withCredentials([string(credentialsId: 'dooray_incoming_hookurl', variable: 'DOORAY_URL')]) {
+ 
+                httpRequest httpMode: 'POST', 
+                    requestBody: """{"botName": "Jenkins Pipeline Training", "botIconImage": "https://static.dooray.com/static_images/dooray-bot.png", "text":"${messengerBody}",
+                        "attachments" : [
+                            {
+                                "title" : "docker hub",
+                                "titleLink" : "https://hub.docker.com/r/hyunilshin/jenkins-training-nginx/tags",
+                                "text" : "",
+                                "color" : "blue"
+                            }
+                        ]
+                    }""", 
+                    responseHandle: 'NONE', url: "${DOORAY_URL}", contentType: 'APPLICATION_JSON'
+            }
          }
       }
 }

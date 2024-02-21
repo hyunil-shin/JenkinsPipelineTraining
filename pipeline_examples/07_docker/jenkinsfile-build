@@ -25,7 +25,7 @@ node {
 
       stage('Push image') {
          docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-hyunilshin') {
-             app.push() // default: branch-build_number
+             app.push() // tag: branch-build_number
              app.push("latest")
 
              // 
